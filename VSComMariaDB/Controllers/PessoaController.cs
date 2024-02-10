@@ -54,11 +54,11 @@ namespace VSComMariaDB.Controllers
         }
 
         [HttpPost]
-        public async Task<List<Pessoa>> Inserir(List<Pessoa> pessoa)
+        public async Task<Pessoa> Inserir(Pessoa pessoa)
         {
             var _DbContext = new _DbContext();
 
-            await _DbContext.Pessoa.AddRangeAsync(pessoa);
+            await _DbContext.Pessoa.AddAsync(pessoa);
             await _DbContext.SaveChangesAsync();
 
             return pessoa;
