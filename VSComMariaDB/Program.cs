@@ -2,6 +2,8 @@ using VSComMariaDB.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors();
+
 builder.Services.AddDbContext<_DbContext>();
 
 builder.Services.AddControllers();
@@ -21,6 +23,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(v =>
+{
+    v.AllowAnyHeader();
+    v.AllowAnyMethod();
+    v.AllowAnyOrigin();
+}
+);
 
 app.UseHttpsRedirection();
 
